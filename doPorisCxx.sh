@@ -3,7 +3,7 @@
 if [ -z ${PORIS_SAFETY_OVERRIDE+x} ]; then 
     echo "PORIS_SAFETY_OVERRIDE is not set, checking repo is clean";
     if [ -z "$(git status --porcelain)" ]; then 
-        echo "Welcome to doPorisDev.sh"
+        echo "Welcome to doPorisCxx.sh"
     else 
         # Uncommitted changes
         echo "ERROR: YOUR REPOSITORY IS NOT CLEAN"
@@ -97,15 +97,15 @@ fi
 ######### PARSING THE MODEL AND GENERATING THE PORIS PRODUCTS ###############
 cd ${DEVBASE_PATH}
 if [ -z ${PORIS_CLEAN+x} ]; then 
-    echo "PORIS_CLEAN is not set, bypassing poris2Cxx.py";
+    echo "PORIS_CLEAN is not set, bypassing poris2cxx.py";
     # We will have to recover the preserved files depending on PORISDEV_CLEAN variable
     mv _${DEVNAME}PORIS.h ${DEVBASE_PATH}/${DEVNAME}/
     mv ${DEVNAME}PORIS.cpp ${DEVBASE_PATH}/${DEVNAME}
 else 
     echo "Generating the PORIS device products from $1.ods"
-    python3 ${PORIS_TOOLS_PATH}/poris2xml.py models/$1.ods || { echo 'poris2Cxx.py failed' ; exit 1; }
+    python3 ${PORIS_TOOLS_PATH}/poris2xml.py models/$1.ods || { echo 'poris2cxx.py failed' ; exit 1; }
     echo "path"
     echo ${PORIS_TOOLS_CXX_PATH}
-    python3 ${PORIS_TOOLS_CXX_PATH}/poris2cxx.py models/$1.ods || { echo 'poris2Cxx.py failed' ; exit 1; }
+    python3 ${PORIS_TOOLS_CXX_PATH}/poris2cxx.py models/$1.ods || { echo 'poris2cxx.py failed' ; exit 1; }
 fi
 
