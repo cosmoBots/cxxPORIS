@@ -1,4 +1,4 @@
-welcome_message = "/* HELLO!!!!.  We are about to generate your GCS device as you described in the Input ODS file.\n You owe a beer to cosmobots.eu */\n\n\n"
+welcome_message = "/* HELLO!!!!.  We are about to generate your C++ device as you described in the Input ODS file.\n You owe a beer to cosmobots.eu */\n\n\n"
 
 dict_max_rows_column = 27
 dict_max_rows_row = 0
