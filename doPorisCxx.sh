@@ -17,7 +17,7 @@ if [ -z ${PORIS_SAFETY_OVERRIDE+x} ]; then
     fi
 else
     echo "PORIS_SAFETY_OVERRIDE is set, skip checking repo is clean";
-    echo "Welcome to doPorisDev.sh"
+    echo "Welcome to doPorisCxx.sh"
 fi
 
 ######### SAFETY AREA ############
@@ -29,18 +29,7 @@ fi
 # TODO: Convert them to arguments
 # This will force the script to firstly clean every previous product
 # PORIS_CLEAN=0
-# If set, the Interface Repository is not in the localhost, so it will
-# avoid executing the cs -t ir.restart; cs -t ir.load process
-# and will warn the user to do it in the IR host
-# TODO: Try to avoid this definition by getting the value from the ${GCS_OPT_FILE}
-# that will be defined below
-# This is the relative path from ${WORKING_GCS_PATH}/src_src/ to
-# the folder where the $1.ods file is located.  It also will be used
-# to build the ${DEVBASE_JAVA_PATH}/$1 folder where the Java panels
-# will be created.
-# You could check this diagram: http://ll-sb1:3000/cosmosys/gcs/hie_gv.svg
-# Normally set to the DEVBASE_RELATIVE_PATH=gtc/DSL/CK/DevLib, but you
-# should change it when the final device location is defined.
+
 DEVBASE_PATH=`pwd`
 
 ########### INTERNAL VARIABLES CALCULATION AREA ##############

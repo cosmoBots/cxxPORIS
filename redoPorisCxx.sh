@@ -4,5 +4,5 @@
 # Set the clean environment variable
 export PORIS_CLEAN=1
 
-# Execute the doPorisDev.sh
-cxxPORIS/doPorisCxx.sh $1 || { echo 'doPorisDev.py failed' ; exit 1; }
+# Execute the doPorisCxx.sh
+cxxPORIS/doPorisCxx.sh $1 || { echo 'doPorisCxx.sh failed' ; exit 1; }
