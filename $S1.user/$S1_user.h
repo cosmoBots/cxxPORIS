@@ -1,7 +1,10 @@
 #ifndef _DEVICENAME_user_H
 #define _DEVICENAME_user_H
 
-// Add the specific headers for your device here (f.i. detector/actuator/... API)
-#include "YourAPI_link.h"
+#include <PORIS.h>
+
+// Add one command here for every prCmd you have drawn in your PORIS model
+int DEVICENAME_command(PORISNode *mynode);
+
 
 #endif //_DEVICENAME_user_H
