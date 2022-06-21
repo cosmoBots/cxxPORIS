@@ -74,7 +74,7 @@ class PORISParam : public PORISNode {
     PORISValue *selectedValue = NULL;
 
     PORISMode* setMode(PORISMode *m) override;
-    uint8_t setMode(uint8_t idx) { PORISNode::setMode(idx); };
+    uint8_t setMode(uint8_t idx) { return PORISNode::setMode(idx); };
     PORISValue *setEligibleValue(void);
     PORISValue *getEligibleValue(PORISValue *v);
     PORISValue *setValue(PORISValue *v);
@@ -88,7 +88,7 @@ class PORISSys : public PORISNode {
     std::list<PORISSys *> subsystems;
 
     PORISMode* setMode(PORISMode *m) override;
-    uint8_t setMode(uint8_t idx) { PORISNode::setMode(idx); };
+    uint8_t setMode(uint8_t idx) { return PORISNode::setMode(idx); };
     PORISSys *getSubSystemFromName(string name);
     PORISParam *getSubParamFromName(string name);
     PORISSys *getDescendantFromName(string name);
