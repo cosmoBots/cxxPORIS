@@ -99,8 +99,10 @@ else
   ###  Control will jump here if $DEVBASE_CXX_USER_PATH does NOT exists ###
   echo "${DEVBASE_USER_PATH} not found. Copying template dir."
   cp -r ${PORIS_TOOLS_CXX_PATH}'/$S1_user' ${DEVBASE_USER_PATH}
-  mv ${DEVBASE_USER_PATH}'/$S1_user.l/$S1_user.cpp' ${DEVBASE_USER_PATH}/${DEVNAME}_user.l/${DEVNAME}_user.cpp
-  mv ${DEVBASE_USER_PATH}'/$S1_user.l/$S1_user.h'   ${DEVBASE_USER_PATH}/${DEVNAME}_user.l/${DEVNAME}_user.h  
+
+  mv ${DEVBASE_USER_PATH}'/$S1_user.cpp' ${DEVBASE_USER_PATH}/${DEVNAME}_user.cpp
+  mv ${DEVBASE_USER_PATH}'/$S1_user.h' ${DEVBASE_USER_PATH}/${DEVNAME}_user.h
+
   sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_user.h
   sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_user.h
   sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_user.h
