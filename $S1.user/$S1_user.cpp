@@ -8,7 +8,13 @@
 
 using namespace std;
 
-int DEVICENAME_command(PORISNode *mynode)
+// In the DEVICENAME.l folder there is a pair of DEVICENAME_stub files (cpp and h)
+// You should copy the stubs here below, and modify them to overwrite them with custom functionaliy added by you
+// As the stubs are automatically generated from the model, you are advised to check
+// them regularly.  
+/*  This is an example:
+
+int DEVICENAME_command(PORISNode *mynode, DEVICENAME *thisdevice)
 {
 	int ret = EXIT_FAILURE;
 	cout << "Executing 'command' method with node " << mynode->name << endl;
@@ -16,5 +22,6 @@ int DEVICENAME_command(PORISNode *mynode)
 	ret = EXIT_SUCCESS;
 	return ret;
 }
+*/
 
 #endif //_DEVICENAME_CPP
