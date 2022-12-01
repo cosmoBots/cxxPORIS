@@ -246,7 +246,7 @@ methods_dict = {}
 def createCxxCode(nodes_dict,deviceName):
     global methods_dict
     # Now we read the methods list from the file
-    functionsfile = "./"+deviceName+"_user/methods.ods"
+    functionsfile = "./"+deviceName+"_physical/methods.ods"
     functionsdata = get_data(functionsfile,start_row=config.methods_file_start_row, row_limit=config.methods_file_row_limit, 
         start_column=config.methods_file_start_column,column_limit=config.methods_file_column_limit)[config.methods_file_sheet]
 

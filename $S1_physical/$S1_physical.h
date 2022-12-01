@@ -1,5 +1,5 @@
-#ifndef _DEVICENAME_user_H
-#define _DEVICENAME_user_H
+#ifndef _DEVICENAME_physical_H
+#define _DEVICENAME_physical_H
 
 #include <PORIS.h>
 
@@ -16,4 +16,4 @@ int DEVICENAME_command(PORISNode *mynode, DEVICENAME *thisdevice);
 
 
 
-#endif //_DEVICENAME_user_H
+#endif //_DEVICENAME_physical_H

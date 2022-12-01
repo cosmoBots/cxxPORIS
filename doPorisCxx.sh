@@ -66,7 +66,7 @@ echo ${PORIS_TOOLS_PATH}
 echo ${PORIS_TOOLS_CXX_PATH}
 
 # The path for the C++ base folder for the specific (user) custom code of the device
-DEVBASE_USER_PATH=${DEVBASE_PATH}/${DEVNAME}_user
+DEVBASE_USER_PATH=${DEVBASE_PATH}/${DEVNAME}_physical
 
 ########### WELCOME MESSAGE CALCULATION AREA ##############
 
@@ -98,17 +98,17 @@ if [ -d "$DEVBASE_USER_PATH" ]; then
 else
   ###  Control will jump here if $DEVBASE_CXX_USER_PATH does NOT exists ###
   echo "${DEVBASE_USER_PATH} not found. Copying template dir."
-  cp -r ${PORIS_TOOLS_CXX_PATH}'/$S1_user' ${DEVBASE_USER_PATH}
+  cp -r ${PORIS_TOOLS_CXX_PATH}'/$S1_physical' ${DEVBASE_USER_PATH}
 
-  mv ${DEVBASE_USER_PATH}'/$S1_user.cpp' ${DEVBASE_USER_PATH}/${DEVNAME}_user.cpp
-  mv ${DEVBASE_USER_PATH}'/$S1_user.h' ${DEVBASE_USER_PATH}/${DEVNAME}_user.h
+  mv ${DEVBASE_USER_PATH}'/$S1_physical.cpp' ${DEVBASE_USER_PATH}/${DEVNAME}_physical.cpp
+  mv ${DEVBASE_USER_PATH}'/$S1_physical.h' ${DEVBASE_USER_PATH}/${DEVNAME}_physical.h
 
-  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_user.h
-  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_user.h
-  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_user.h
-  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_user.cpp
-  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_user.cpp
-  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_user.cpp
+  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.h
+  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.h
+  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.h
+  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.cpp
+  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.cpp
+  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.cpp
 fi
 
 ######### PARSING THE MODEL AND GENERATING THE PORIS PRODUCTS ###############

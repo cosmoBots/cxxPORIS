@@ -1,10 +1,10 @@
-#ifndef _DEVICENAME_user_CPP
-#define _DEVICENAME_user_CPP
+#ifndef _DEVICENAME_physical_CPP
+#define _DEVICENAME_physical_CPP
 
 // Add the specific cpp fragments for your device here (f.i. detector/actuator/... API)
 // These fragments will be added at preprocessor time.
 // You can choose better to add the specific code as a library using the _lmk.linux file
-#include "DEVICENAME_user.h"
+#include "DEVICENAME_physical.h"
 
 using namespace std;
 
