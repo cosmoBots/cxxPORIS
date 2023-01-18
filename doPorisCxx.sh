@@ -103,13 +103,9 @@ else
   mv ${DEVBASE_USER_PATH}'/$S1_physical.cpp' ${DEVBASE_USER_PATH}/${DEVNAME}_physical.cpp
   mv ${DEVBASE_USER_PATH}'/$S1_physical.h' ${DEVBASE_USER_PATH}/${DEVNAME}_physical.h
 
-  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.h
-  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.h
-  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.h
-  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.cpp
-  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.cpp
-  sed -i "s/DEVICENAME/$1/" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.cpp
-fi
+  sed -i "s/DEVICENAME/$1/g" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.h
+  sed -i "s/DEVICENAME/$1/g" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.cpp
+  
 
 ######### PARSING THE MODEL AND GENERATING THE PORIS PRODUCTS ###############
 cd ${DEVBASE_PATH}
