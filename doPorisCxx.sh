@@ -6,7 +6,7 @@ if [ $# -eq 0 ]
     exit 1;
 fi
 
-FILE=./$1.ods
+FILE=./models/$1.ods
 if test -f "$FILE"; then
     echo "Input $FILE exists, continuing"
 else
@@ -46,6 +46,7 @@ fi
 # PORIS_CLEAN=0
 
 DEVBASE_PATH=`pwd`
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 ########### INTERNAL VARIABLES CALCULATION AREA ##############
 
@@ -60,13 +61,13 @@ DEVNAME=$1
 # change DEVBASE_RELATIVE_PATH you might want to separate the link
 # between the two variables
 PORIS_TOOLS_PATH=${DEVBASE_PATH}/pyPORIS
-PORIS_TOOLS_CXX_PATH=${DEVBASE_PATH}/cxxPORIS
+PORIS_TOOLS_CXX_PATH=${SCRIPT_DIR}
 echo "path"
 echo ${PORIS_TOOLS_PATH}
 echo ${PORIS_TOOLS_CXX_PATH}
 
 # The path for the C++ base folder for the specific (user) custom code of the device
-DEVBASE_USER_PATH=${DEVBASE_PATH}/${DEVNAME}_physical
+DEVBASE_USER_PATH=${DEVBASE_PATH}/output/${DEVNAME}_physical
 
 ########### WELCOME MESSAGE CALCULATION AREA ##############
 
@@ -78,25 +79,25 @@ if [ -z ${PORIS_CLEAN+x} ]; then
     echo "PORIS_CLEAN is not set, keeping already generated files";
     # We will have to preserve some files depending on PORISDEV_CLEAN variable
     echo "Preserve some previous files and removing the library directory";
-    cp ${DEVBASE_PATH}/${DEVNAME}/${DEVNAME}PORIS.h .
-    cp ${DEVBASE_PATH}/${DEVNAME}/${DEVNAME}PORIS.cpp .
-    rm -rf ${DEVBASE_PATH}/${DEVNAME}
+    cp ${DEVBASE_PATH}/output/${DEVNAME}/${DEVNAME}PORIS.h .
+    cp ${DEVBASE_PATH}/output/${DEVNAME}/${DEVNAME}PORIS.cpp .
+    rm -rf ${DEVBASE_PATH}/output/${DEVNAME}
 else
     echo "Cleaning previous generated products"
-    rm -rf ${DEVBASE_PATH}/${DEVNAME}
+    rm -rf ${DEVBASE_PATH}/output/${DEVNAME}
 fi
 
 ######### CREATING FOLDERS AREA ###############
 # Let's create the product directories
-mkdir -p ${DEVBASE_PATH}/${DEVNAME}
+mkdir -p ${DEVBASE_PATH}/output/${DEVNAME}
 
 ######### If no USER CUSTOM CODE FOLDER ADDED, COPY THE TEMPLATE ONE #############
-echo "Checking the existence of ${DEVBASE_CXX_USER_PATH}"
+echo "Checking the existence of ${DEVBASE_USER_PATH}"
 if [ -d "$DEVBASE_USER_PATH" ]; then
   ### Take action if $DEVBASE_USER_PATH exists ###
   echo "${DEVBASE_USER_PATH} already present, nothing to do"
 else
-  ###  Control will jump here if $DEVBASE_CXX_USER_PATH does NOT exists ###
+  ###  Control will jump here if $DEVBASE_USER_PATH does NOT exists ###
   echo "${DEVBASE_USER_PATH} not found. Copying template dir."
   cp -r ${PORIS_TOOLS_CXX_PATH}'/$S1_physical' ${DEVBASE_USER_PATH}
 
@@ -105,15 +106,15 @@ else
 
   sed -i "s/DEVICENAME/$1/g" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.h
   sed -i "s/DEVICENAME/$1/g" ${DEVBASE_USER_PATH}/${DEVNAME}_physical.cpp
-  
+fi
 
 ######### PARSING THE MODEL AND GENERATING THE PORIS PRODUCTS ###############
 cd ${DEVBASE_PATH}
 if [ -z ${PORIS_CLEAN+x} ]; then 
     echo "PORIS_CLEAN is not set, bypassing poris2cxx.py";
     # We will have to recover the preserved files depending on PORISDEV_CLEAN variable
-    mv _${DEVNAME}PORIS.h ${DEVBASE_PATH}/${DEVNAME}/
-    mv ${DEVNAME}PORIS.cpp ${DEVBASE_PATH}/${DEVNAME}
+    mv _${DEVNAME}PORIS.h ${DEVBASE_PATH}/output/${DEVNAME}/
+    mv ${DEVNAME}PORIS.cpp ${DEVBASE_PATH}/output/${DEVNAME}
 else 
     echo "Generating the PORIS device products from $1.ods"
     python3 ${PORIS_TOOLS_PATH}/poris2xml.py models/$1.ods || { echo 'poris2cxx.py failed' ; exit 1; }
