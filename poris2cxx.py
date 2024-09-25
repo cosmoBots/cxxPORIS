@@ -246,7 +246,7 @@ methods_dict = {}
 def createCxxCode(nodes_dict,deviceName):
     global methods_dict
     # Now we read the methods list from the file
-    functionsfile = "./output/"+deviceName+"_physical/methods.ods"
+    functionsfile = "./output/cxx/"+deviceName+"_physical/methods.ods"
     functionsdata = get_data(functionsfile,start_row=config.methods_file_start_row, row_limit=config.methods_file_row_limit, 
         start_column=config.methods_file_start_column,column_limit=config.methods_file_column_limit)[config.methods_file_sheet]
 
@@ -830,7 +830,7 @@ def createCxxCode(nodes_dict,deviceName):
     filestr += methodsstr+"\n"
     filestr += "}\n\n"
 
-    with open("./output/"+deviceName+"/"+deviceName+".h", "w") as text_file:
+    with open("./output/cxx/"+deviceName+"/"+deviceName+".h", "w") as text_file:
         text_file.write(filestr)
 
 
@@ -846,10 +846,10 @@ def createCxxCode(nodes_dict,deviceName):
     poriscstr += poriscinitstr 
     poriscstr += poriscsyncstr
 
-    with open("./output/"+deviceName+"/_"+deviceName+"PORIS.h", "w+") as text_file:
+    with open("./output/cxx/"+deviceName+"/_"+deviceName+"PORIS.h", "w+") as text_file:
         text_file.write(porishstr)
 
-    with open("./output/"+deviceName+"/"+deviceName+"PORIS.cpp", "w+") as text_file:
+    with open("./output/cxx/"+deviceName+"/"+deviceName+"PORIS.cpp", "w+") as text_file:
         text_file.write(poriscstr)
 
 
