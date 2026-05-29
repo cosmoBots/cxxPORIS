@@ -62,6 +62,7 @@ DEVNAME=$1
 # between the two variables
 PORIS_TOOLS_PATH=${DEVBASE_PATH}/pyPORIS
 PORIS_TOOLS_CXX_PATH=${SCRIPT_DIR}
+PORIS_TOOLS_CXX_SCRIPTS_PATH=${SCRIPT_DIR}/scripts
 echo "path"
 echo ${PORIS_TOOLS_PATH}
 echo ${PORIS_TOOLS_CXX_PATH}
@@ -117,9 +118,8 @@ if [ -z ${PORIS_CLEAN+x} ]; then
     mv ${DEVNAME}PORIS.cpp ${DEVBASE_PATH}/output/cxx/${DEVNAME}
 else 
     echo "Generating the PORIS device products from $1.ods"
-    python3 ${PORIS_TOOLS_PATH}/poris2xml.py models/$1.ods || { echo 'poris2cxx.py failed' ; exit 1; }
+    python3 ${PORIS_TOOLS_PATH}/scripts/poris2xml.py models/$1.ods || { echo 'poris2xml.py failed' ; exit 1; }
     echo "path"
     echo ${PORIS_TOOLS_CXX_PATH}
-    python3 ${PORIS_TOOLS_CXX_PATH}/poris2cxx.py models/$1.ods || { echo 'poris2cxx.py failed' ; exit 1; }
+    python3 ${PORIS_TOOLS_CXX_SCRIPTS_PATH}/poris2cxx.py models/$1.ods || { echo 'poris2cxx.py failed' ; exit 1; }
 fi
-
